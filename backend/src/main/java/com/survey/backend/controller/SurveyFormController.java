@@ -4,7 +4,6 @@ import com.survey.backend.model.SurveyForm;
 import com.survey.backend.service.SurveyFormService;
 import com.survey.backend.service.SurveyInviteService;
 import com.survey.backend.service.SurveyResponseService;
-import com.survey.backend.repository.SurveyResponseRepository;
 import com.survey.backend.repository.SurveyFormRepository;
 import com.survey.backend.dto.CreateSurveyRequest;
 import com.survey.backend.model.Question;
@@ -22,15 +21,12 @@ public class SurveyFormController {
 
     private final SurveyFormService service;
     private final SurveyInviteService surveyInviteService;
-    private final SurveyResponseService responseService;
-    private final SurveyResponseRepository responseRepo;
+    // Removed unused field responseRepo
     private final SurveyFormRepository surveyFormRepository;
 
-    public SurveyFormController(SurveyFormService service, SurveyInviteService surveyInviteService, SurveyResponseService responseService, SurveyResponseRepository responseRepo, SurveyFormRepository surveyFormRepository) {
+    public SurveyFormController(SurveyFormService service, SurveyInviteService surveyInviteService, SurveyResponseService responseService, SurveyFormRepository surveyFormRepository) {
         this.service = service;
         this.surveyInviteService = surveyInviteService;
-        this.responseService = responseService;
-        this.responseRepo = responseRepo;
         this.surveyFormRepository = surveyFormRepository;
     }
 
