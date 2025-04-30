@@ -30,5 +30,4 @@ public ResponseEntity<List<SurveyResponse>> getResponses(@PathVariable Long surv
     List<SurveyResponse> responses = responseService.getResponsesBySurveyId(surveyId);
     return ResponseEntity.ok(responses);
 }
-
 }

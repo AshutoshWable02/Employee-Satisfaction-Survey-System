@@ -60,9 +60,9 @@ protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull Ht
             authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authToken);
 
-            System.out.println("✅ JWT authentication successful for user: " + username);
+            System.out.println("JWT authentication successful for user: " + username);
         } else {
-            System.out.println("❌ Invalid JWT token for user: " + username);
+            System.out.println("Invalid JWT token for user: " + username);
         }
     }
 

@@ -105,11 +105,6 @@ public SurveyForm updateSurvey(Long id, SurveyForm updatedForm) {
     public void deleteSurvey(Long id) {
         SurveyForm surveyForm = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Survey not found with id: " + id));
-
-        // Optionally, you can also delete questions associated with the survey
-        // if cascade delete is not configured in the relationship.
-        // If cascade delete is enabled, the associated questions will be deleted automatically.
-
         repository.delete(surveyForm);
     }
 }

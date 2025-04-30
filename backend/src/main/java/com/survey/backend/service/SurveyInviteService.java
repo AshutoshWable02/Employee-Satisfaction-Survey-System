@@ -25,7 +25,7 @@ public class SurveyInviteService {
     private EmailService emailService;
 
     private String generateRandomPassword() {
-        return PasswordGenerator.generate(8); // Assuming PasswordGenerator has a static method to generate passwords
+        return PasswordGenerator.generate(8);
     }
 
     @Transactional

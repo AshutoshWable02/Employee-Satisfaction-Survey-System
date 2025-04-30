@@ -18,12 +18,12 @@ public class JwtUtil {
     @Value("${app.jwt.expiration}")
     private Long jwtExpiration;
 
-    // ✅ Centralized method to get the signing key
+    // Centralized method to get the signing key
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(jwtSecret.getBytes());
     }
 
-    // ✅ Generate a JWT token with subject and expiration
+    //  Generate a JWT token with subject and expiration
     public String generateToken(String username) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + jwtExpiration);
@@ -36,7 +36,7 @@ public class JwtUtil {
                 .compact();
     }
 
-    // ✅ Extract username from token
+    // Extract username from token
     public String extractUsername(String token) {
         try {
             return Jwts.parserBuilder()
@@ -50,7 +50,7 @@ public class JwtUtil {
         }
     }
 
-    // ✅ Basic token validation
+    //  Basic token validation
     public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder()
@@ -63,13 +63,13 @@ public class JwtUtil {
         }
     }
 
-    // ✅ Advanced validation using UserDetails (used in AuthFilter)
+    // Advanced validation using UserDetails (used in AuthFilter)
     public boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username != null && username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-    // ✅ Check if token is expired
+    // Check if token is expired
     public boolean isTokenExpired(String token) {
         Date expiration = Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
@@ -80,7 +80,7 @@ public class JwtUtil {
         return expiration.before(new Date());
     }
 
-    // ✅ Extract expiration date from token
+    //  Extract expiration date from token
     public Date extractExpiration(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())

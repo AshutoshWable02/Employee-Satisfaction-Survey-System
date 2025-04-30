@@ -39,12 +39,10 @@ public class SecurityConfig {
             .cors().and()
             .csrf().disable()
             .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // allow preflight
-                .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/employee/**").permitAll()
-                .requestMatchers("/api/admin/**").authenticated() // ✅ Now secured
+                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .requestMatchers("/api/auth/**", "/api/employee/**").permitAll()
+                .requestMatchers("/api/admin/**").authenticated()
                 .anyRequest().authenticated()
-
             .and()
             .exceptionHandling()
                 .authenticationEntryPoint(authenticationEntryPoint)

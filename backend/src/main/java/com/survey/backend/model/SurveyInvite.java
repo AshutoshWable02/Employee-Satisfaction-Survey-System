@@ -14,21 +14,10 @@ public class SurveyInvite {
     private String email;
     private String password;
     private boolean used = false;
-    @Column(nullable = false)
-    private String department;
-
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
 
     private LocalDateTime createdAt;
 
-    @ManyToOne(cascade = CascadeType.ALL)  
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "survey_form_id", nullable = false)
     @JsonBackReference
     private SurveyForm surveyForm;

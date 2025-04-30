@@ -9,6 +9,4 @@ import java.util.Optional;
 public interface SurveyInviteRepository extends JpaRepository<SurveyInvite, Long> {
     Optional<SurveyInvite> findByEmailAndPasswordAndUsedFalse(String email, String password);
     List<SurveyInvite> findByEmailAndSurveyForm_Id(String email, Long surveyFormId);
-    
-
 }
